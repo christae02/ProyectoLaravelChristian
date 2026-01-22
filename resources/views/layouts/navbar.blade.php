@@ -2,7 +2,7 @@
     <div class="flex">
         <p class="text-white text-5xl p-[15px]">Antibioticos Farmacias La Providencia</p>
         <img class="w-80" src="{{ asset('images/FarmaciaLaProvidencia.png') }}" alt="Logo">
-        <button class="w-20" ><a href="index.html"><img src="{{ asset('images/casita blanca.png') }}" alt=""></a></button>
+        <button class="w-20" ><a href="inicio"><img src="{{ asset('images/casita blanca.png') }}" alt=""></a></button>
     </div>
 </div>
 <div class="flex bg-green-500">
