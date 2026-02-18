@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Existencia extends Model {
     use SoftDeletes, HasFactory;
@@ -25,4 +27,8 @@ class Existencia extends Model {
     public function movimientos(): HasMany {
         return $this->hasMany(Movimientos::class);
     }
+
+    protected $casts = [
+        'fecha_cad' => 'date',
+    ];
 }

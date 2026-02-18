@@ -23,8 +23,9 @@ class MovimientosFactory extends Factory
             'receta' => rand(100000,9999999),
             'existencia_anterior' => rand(0,50),
             'nueva_existencia' => rand(0,50),
-            'existencias_id' => rand(1,20),
-            'doctor_id' =>rand(1,10)
+            'existencia_id' => rand(1,20),
+            'doctor_id' => rand(1,10),
+            'domicilio' => fake()->address()
         ];
     }
 }

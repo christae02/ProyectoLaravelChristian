@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellidoPaterno');
             $table->string('apellidoMaterno');
-            $table->integer('cedProf')->unique();
+            $table->bigInteger('cedProf')->unique();
             $table->softDeletes();
             $table->timestamps();
         });

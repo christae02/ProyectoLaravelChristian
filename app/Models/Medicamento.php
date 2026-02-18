@@ -14,6 +14,7 @@ class Medicamento extends Model {
     protected $fillable = [
         'nombre',
         'presentacion',
+        'mg',
         'imagen'
     ]; // Obligatoria -> Mass Assigment
 

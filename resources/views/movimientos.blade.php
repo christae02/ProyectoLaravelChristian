@@ -2,7 +2,12 @@
 @section('content')
     <div class="flex mb-37 mt-10 justify-center">
       <div class="bg-gray-300 ml-25 mr-25 p-15 justify-items-center">
+
+        <div>
             <h1 class="text-4xl">Movimientos</h1>
+            
+        </div>
+
             <table class="w-full mt-5">
                 <thead>
                     <tr>
@@ -21,50 +26,30 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
-                    <tr>
-                        <x-tabledata type="td" data="10-12-2025"/>
-                        <x-tabledata type="td" data="Salida"/>
-                        <x-tabledata type="td" data="Amoxicilina 250mg"/>
-                        <x-tabledata type="td" data="Amoxin"/>
-                        <x-tabledata type="td" data="1"/>
-                        <x-tabledata type="td" data="1525415"/>
-                        <x-tabledata type="td" data="Mayo 2026"/>
-                        <x-tabledata type="td" data="Fernando Daniel Escobar Gomez"/>
-                        <x-tabledata type="td" data="185265120"/>
-                        <x-tabledata type="td" data="Antonio Albarran 256"/>
-                        <x-tabledata type="td" data="1525415"/>
-                        <x-tabledata type="td" data="3"/>
-                    </tr>
-                    <tr>
-                        <x-tabledata type="td" data="10-12-2025"/>
-                        <x-tabledata type="td" data="Salida"/>
-                        <x-tabledata type="td" data="Ceftriaxona 500mg"/>
-                        <x-tabledata type="td" data="Ceftriaxona"/>
-                        <x-tabledata type="td" data="2"/>
-                        <x-tabledata type="td" data="2516985"/>
-                        <x-tabledata type="td" data="Abril 2027"/>
-                        <x-tabledata type="td" data="Fernando Daniel Escobar Gomez"/>
-                        <x-tabledata type="td" data="185265120"/>
-                        <x-tabledata type="td" data="Antonio Albarran 256"/>
-                        <x-tabledata type="td" data="1525415"/>
-                        <x-tabledata type="td" data="5"/>
-                    </tr>
-                    <tr>
-                        <x-tabledata type="td" data="10-12-2025"/>
-                        <x-tabledata type="td" data="Entrada"/>
-                        <x-tabledata type="td" data="Ceftriaxona 500mg"/>
-                        <x-tabledata type="td" data="Ceftriaxona"/>
-                        <x-tabledata type="td" data="3"/>
-                        <x-tabledata type="td" data="2516985"/>
-                        <x-tabledata type="td" data="Abril 2027"/>
-                        <x-tabledata type="td" data="--------"/>
-                        <x-tabledata type="td" data="--------"/>
-                        <x-tabledata type="td" data="--------"/>
-                        <x-tabledata type="td" data="--------"/>
-                        <x-tabledata type="td" data="15"/>
-                    </tr>
+                    @forelse ($movimientos as $movimiento)
+                        <tr>
+                            <x-tabledata type="td" data="{{ $movimiento->fecha }}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->tipo }}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->existencia->medicamento->nombre }}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->existencia->medicamento->presentacion }}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->cantidad }}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->existencia->lote }}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->existencia->fecha_cad }}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->doctor->nombre }} {{ $movimiento->doctor->apellidoPaterno }} {{ $movimiento->doctor->apellidoMaterno }}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->doctor->cedProf }}"/>
+                            <x-tabledata type="td" data="Por alli"/>
+                            <x-tabledata type="td" data="{{ $movimiento->receta }}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->nueva_existencia }}"/>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td>No hay registros</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
+
+            {{ $movimientos->links() }}
       </div>
     </div>
 @endsection()

@@ -12,7 +12,7 @@ class Direcciones extends Model {
     protected $table = 'direcciones';
 
     protected $fillable = [
-        'direccion',
+        'domicilio',
         'doctor_id'
     ]; // Obligatoria -> Mass Assigment
 

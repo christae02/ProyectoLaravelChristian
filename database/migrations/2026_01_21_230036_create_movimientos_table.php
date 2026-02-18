@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->enum('tipo',['entrada','salida']);
             $table->integer('cantidad');
-            $table->date('fecha');
-            $table->string('receta');
+            $table->timestamp('fecha');
+            $table->string('receta')->nullable();
             $table->integer('existencia_anterior');
             $table->integer('nueva_existencia');
             
-            $table->foreignId('existencias_id')
+            $table->foreignId('existencia_id')
                 ->nullable()
                 ->constrained('existencia','id')
                 ->nullOnDelete();
@@ -29,6 +29,8 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('doctor','id')
                 ->nullOnDelete();
+
+            $table->string('domicilio')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

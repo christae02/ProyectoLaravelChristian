@@ -9,6 +9,6 @@ class MovimientosSeeder extends Seeder
 {
     public function run(): void
     {
-        Movimientos::factory(1000)->create();
+        Movimientos::factory(50)->create();
     }
 }

@@ -19,6 +19,7 @@ class MedicamentoFactory extends Factory
         return [
             'nombre' => fake()->randomElement(['Amoxicilina','Ceftriaxona','Acido Clavulanico','Ciprofloxacino','Clindamicina','Eritromicina']),
             'presentacion' => fake()->randomElement(['Suspension','IntraMuscular','Tabletas']),
+            'mg' => fake()->randomElement(['500','750','250','1000','875/25','250/62.5']),
             'imagen' => fake()->imageUrl(360, 360, 'medicamentos',true,'antibioticos')
         ];
     }
