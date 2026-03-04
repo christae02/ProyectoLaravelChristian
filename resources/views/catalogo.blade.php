@@ -40,15 +40,18 @@
           fecha=" {{ $existencia->fecha_cad->locale('es')->translatedFormat('F Y') }}"
           lote="{{ $existencia->lote }}"
           existencia="{{ $existencia->existencias }}"
-          imagen="images/clamoxin.jpg"
+          imagen="{{ $existencia->medicamento->imagen }}"
+          id="{{ $existencia->id }}"
         />
       @empty
         <h1>No existen antibioticos, Ingrese uno</h1>
       @endforelse
 
-      {{ $existencias->links() }}
+      
 
     </div>
-
+    <div class="w-[100%] flex justify-center mb-5">
+      {{ $existencias->links() }}
+    </div>
   </div>
 @endsection()

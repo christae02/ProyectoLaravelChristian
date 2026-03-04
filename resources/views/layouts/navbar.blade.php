@@ -3,7 +3,7 @@
         <p class="text-white text-5xl p-[15px] w-[55%]">Antibioticos Farmacias La Providencia</p>
         <img class="w-80" src="{{ asset('images/FarmaciaLaProvidencia.png') }}" alt="Logo">
         <div class="w-[20%] flex justify-end">
-            <a class="w-35 h-auto" href="#"><img src="{{ asset('images/carrito.png') }}" alt=""></a>
+            <a class="w-35 h-auto" href="{{ route('carrito.index') }}"><img src="{{ asset('images/carrito.png') }}" alt=""></a>
         </div>
     </div>
 </div>

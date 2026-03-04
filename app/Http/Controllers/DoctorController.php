@@ -17,7 +17,7 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::latest('created_at')
             ->with('direcciones')
-            ->paginate(5);
+            ->paginate(8);
 
         return view('doctor', [
             'doctor' => $doctor
@@ -69,15 +69,23 @@ class DoctorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+
+        return view('doctor.edit',[
+            'doctor' => $doctor
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(DoctorRequest $request, string $id)
     {
-        //
+        $doctor = Doctor::findOrFail($id);
+
+        $doctor->update($request->validated());
+
+        return redirect()->route('doctor.index');
     }
 
     /**

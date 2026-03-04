@@ -7,6 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Medicamento;
 use App\Models\Existencia;
 use App\Http\Requests\MedicamentoRequest;
+use Intervention\Image\Facades\Image;
 
 class MedicamentoController extends Controller
 {
@@ -36,7 +37,20 @@ class MedicamentoController extends Controller
      */
     public function store(MedicamentoRequest $request)
     {
-        Medicamento::create($request->validated());
+        $medicamento = $request->validated();
+
+        $imagen = $request->file('imagen');
+
+        $nombre = $imagen->getClientOriginalName();
+
+        Medicamento::create([
+            'nombre' => $request->nombre,
+            'presentacion' => $request->presentacion,
+            'mg' => $request->mg,
+            'imagen' => (string) $nombre
+        ]);
+
+        $imagen->move(public_path('images'),$nombre);
 
         $medicamento = Medicamento::latest('created_at')
             ->first();

@@ -13,7 +13,7 @@
 
     </div>
 
-    <div class="bg-gray-200 w-[80%] p-10 justify-items-center text-center">
+    <div class="bg-gray-200 w-[70%] p-8 justify-items-center text-center">
         <table class="table-fixed w-full mt-5">
             <thead class="text-white bg-blue-500 bold">
                 <tr>
@@ -32,9 +32,9 @@
                     <x-tabledata type="td" data="{{ $doc->apellidoMaterno }}"/>
                     <x-tabledata type="td" data="{{ $doc->cedProf }}"/>
                     <td class="p-0 border">
-                        <div class="flex w-full h-full ml-5 mr-5 pt-4 pb-4">
-                            <x-anchor bg="bg-amber-500 mr-2" title="Editar" href="#" hover="bg-amber-300"/>    
-                            <x-anchor title="Direcciones" href="{{ route('doctor.show',$doc->id) }}" bg="bg-green-500" hover="bg-green-300"/>
+                        <div class="flex w-full h-full ml-5 mr-5 pt-1 pb-1">
+                            <x-anchor bg="bg-amber-500 mr-2" title="Editar" href="{{ route('doctor.editar',$doc->id) }}" hover="bg-amber-300" p="2"/>    
+                            <x-anchor title="Direcciones" href="{{ route('doctor.show',$doc->id) }}" bg="bg-green-500" hover="bg-green-300" p="2"/>
                         </div>  
                     </td>
                 </tr>

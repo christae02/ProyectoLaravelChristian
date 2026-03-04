@@ -28,6 +28,10 @@ class Existencia extends Model {
         return $this->hasMany(Movimientos::class);
     }
 
+    public function carrito(): HasMany {
+        return $this->hasMany(Carrito::class);
+    }
+
     protected $casts = [
         'fecha_cad' => 'date',
     ];

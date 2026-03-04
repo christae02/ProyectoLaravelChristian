@@ -68,11 +68,14 @@
             </table>
 
             {{ $movimientos->links() }}
-      </div>
+        </div>
     </div>
 
-    <div class="flex-col justify-items-center text-center w-[20%] mt-[2%]">
-      <button class="pr-10 pl-10 p-3 bg-green-500 font-bold rounded-4xl text-2xl text-white hover:bg-green-300"><a href="/catalogo">Nueva venta</a></button>
+    <div class="flex flex-col justify-items-center items-center w-[20%] mt-[2%]">
+        <x-anchor href="{{ route('movimientos.index') }}" size="2xl" bg="bg-blue-500" title="Catalogo" hover="bg-blue-300" p="3"/>
+        <button class="mt-5 p-3 bg-green-500 font-bold rounded-4xl text-2xl text-white hover:bg-green-300">
+            <a class="flex items-center" href="{{ route('movimientos.export') }}"><img class="w-[30px] h-[30px] mr-1" src="{{ asset('images/Excel.png') }}" >Exportar</a>
+        </button>
     </div>
 
   </div>

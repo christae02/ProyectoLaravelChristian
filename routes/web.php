@@ -6,6 +6,7 @@ use App\Http\Controllers\MovimientosController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\ExistenciaController;
 use App\Http\Controllers\MedicamentoController;
+use App\Http\Controllers\CarritoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,6 +26,47 @@ Route::get('/inicio/busqueda',[MovimientosController::class,'search'])
 Route::get('/catalogo',[ExistenciaController::class,'index'])
     ->name('catalogo.index');
 
+//Carrito
+Route::get('/carrito',[CarritoController::class,'index'])
+    ->name('carrito.index');
+
+Route::get('/carrito/doctor',[CarritoController::class,'create'])
+    ->name('carrito.doctor');
+
+Route::get('/carrito/create',[CarritoController::class,'validateDoctor'])
+    ->name('carrito.create');
+
+Route::post('/carrito/store',[CarritoController::class,'store'])
+    ->name('carrito.store');
+
+Route::get('/carrito/edit/{id}',[CarritoController::class,'edit'])
+    ->name('carrito.edit');
+
+Route::post('/carrito/update/{id}',[CarritoController::class,'update'])
+    ->name('carrito.update');
+
+Route::post('/carrito/destroy/{id}',[CarritoController::class,'destroy'])
+    ->name('carrito.destroy');
+
+Route::get('/carrito/createDoctor',[CarritoController::class,'createDoctor'])
+    ->name('carrito.createDoctor');
+
+Route::post('/carrito/storeDoctor',[CarritoController::class,'storeDoctor'])
+    ->name('carrito.storeDoctor');
+    
+Route::get('/carrito/createDomicilio/{id}',[CarritoController::class,'createDomicilio'])
+    ->name('carrito.createDomicilio');
+
+Route::post('/carrito/storeDomicilio',[CarritoController::class,'storeDomicilio'])
+    ->name('carrito.storeDomicilio'); 
+
+// MOVIMIENTOS
+
+Route::post('/movimientos/store',[MovimientosController::class,'store'])
+    ->name('movimientos.store');
+
+Route::get('/movimientos/export',[MovimientosController::class,'export'])
+    ->name('movimientos.export');
 
 // DOCTOR
 
@@ -41,6 +83,12 @@ Route::post('/doctor/store',[DoctorController::class,'store'])
     ->name('doctor.store');
 
 Route::view('/doctor/choice','doctor.choice')->name('doctor.choice');
+
+Route::get('/doctor/editar/{id}',[DoctorController::class,'edit'])
+    ->name('doctor.editar');
+
+Route::post('/doctor/update/{id}',[DoctorController::class,'update'])
+    ->name('doctor.update');
 
 // DIRECCIONES
 

@@ -53,7 +53,11 @@ class DireccionesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $direccion = Direcciones::findOrFail($id);
+
+        return view('direcciones.edit',[
+            'direccion' => $direccion
+        ]);
     }
 
     /**

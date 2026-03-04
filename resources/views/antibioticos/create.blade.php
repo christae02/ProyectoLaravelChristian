@@ -10,6 +10,7 @@
             class="bg-gray" 
             method="POST" 
             action="{{ route('antibioticos.store') }}"
+            enctype="multipart/form-data"
         >
             @method('POST')
             @csrf

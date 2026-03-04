@@ -34,7 +34,7 @@
                 <x-tabledata type="td" data="{{ $medicamento->presentacion }}"/>
                 <x-tabledata type="td" data="{{ $medicamento->mg }}"/>
                 <td class="border justify-items-center">
-                  <img class="w-[60%] h-[60%]" src="{{ asset('images/'.$medicamento->imagen) }}">
+                  <img class="w-[100px] h-[75px]" src="{{ asset('images/'.$medicamento->imagen) }}">
                 </td>
                 <td class="p-0 border">
                   <div class="flex w-full h-full ml-5 mr-5">
