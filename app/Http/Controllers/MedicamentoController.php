@@ -37,7 +37,7 @@ class MedicamentoController extends Controller
      */
     public function store(MedicamentoRequest $request)
     {
-        $medicamento = $request->validated();
+        $request->validated();
 
         $imagen = $request->file('imagen');
 
@@ -47,13 +47,13 @@ class MedicamentoController extends Controller
             'nombre' => $request->nombre,
             'presentacion' => $request->presentacion,
             'mg' => $request->mg,
-            'imagen' => (string) $nombre
+            'imagen' => $nombre
         ]);
-
-        $imagen->move(public_path('images'),$nombre);
 
         $medicamento = Medicamento::latest('created_at')
             ->first();
+
+        $imagen->move(public_path('images'),$nombre);
 
         return view('antibioticos.choice',[
             'medicamento' => $medicamento

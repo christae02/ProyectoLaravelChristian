@@ -13,6 +13,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/choiceAntibioticos',function (){
+    return view('antibioticos.choice');
+});
+
 // INICIO
 
 Route::get('/inicio',[MovimientosController::class,'index'])

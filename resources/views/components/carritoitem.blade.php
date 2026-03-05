@@ -23,6 +23,6 @@
             @method('POST')
             <button type="submit" class="ml-2 bg-red-500 rounded-4xl font-bold text-2xl text-white p-3 hover:bg-red-300">Quitar</button>
         </form>
-        <x-anchor bg="bg-blue-500" size="2xl" title="Cantidad" href="{{ route('carrito.edit',$id) }}" hover="bg-blue-300"/>
+        <x-anchor bg="bg-blue-500" size="2xl" title="Editar cantidad" href="{{ route('carrito.edit',$id) }}" hover="bg-blue-300"/>
     </div>
 </div>

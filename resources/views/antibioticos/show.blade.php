@@ -7,7 +7,7 @@
     <div class="flex w-full">
         <div class="ml-[5%] w-[35%]">
             <div>
-                <h1 class="text-8xl font-bold">{{ $total }}</h1>
+                <h1 class="text-5xl font-bold">En existencia: {{ $total }}</h1>
             </div>
             <div class="flex-col h-[70%] mb-10 justify-items-center p-10 bg-blue-300 shadow-2xl rounded-4xl">
                 <h1 class="text-white text-3xl font-bold"> {{ $medicamentos->nombre }}</h1>
@@ -18,19 +18,19 @@
         </div>
         <div class="w-[60%] justify-items-center">
             <div class="w-full flex justify-end mr-[10%] mb-[5%]">
-                <x-anchor bg="bg-green-500" title="Nueva Existencia" href="{{ route('antibioticos.existencia.create',$medicamentos->id) }}" hover="bg-green-300" size="3xl"/>
+                <x-anchor bg="bg-green-500" title="Ingresar Nuevo Lote" href="{{ route('antibioticos.existencia.create',$medicamentos->id) }}" hover="bg-green-300" size="2xl"/>
             </div>
             <div class="flex-col w-[90%]">
                 @forelse ($existencias as $existencia)
                     <div class="flex bg-green-300 hover:bg-green-200 transition rounded-4xl pl-4 pr-4 pt-10 pb-10 w-full mt-[2%] mb-[2%]">
-                        <div class="flex w-[80%]">
+                        <div class="flex w-[70%]">
                             <h1 class="bg-white rounded-4xl text-black text-lg p-2 mr-[1%]">Lote: {{ $existencia->lote }}</h1>
                             <h1 class="bg-white rounded-4xl text-black text-lg p-2 mr-[1%]">Fecha Caducidad: {{ $existencia->fecha_cad->locale('es')->translatedFormat('F Y') }}</h1>
                             <h1 class="bg-white rounded-4xl text-black text-lg p-2 mr-[1%]">Total: {{ $existencia->existencias }}</h1>
                         </div>
-                        <div class="flex w-[20%] justify-end">
+                        <div class="flex w-[30%] justify-end">
                             <x-anchor bg="bg-amber-500" title="Editar" href="{{ route('antibioticos.existencia.edit',$existencia->id) }}" hover="bg-amber-300"/>
-                            <x-anchor bg="bg-blue-500" title="Agregar" href="{{ route('antibioticos.existencia.editCantidad',$existencia->id) }}" hover="bg-blue-300"/>
+                            <x-anchor bg="bg-blue-500" title="Agregar Existencia" href="{{ route('antibioticos.existencia.editCantidad',$existencia->id) }}" hover="bg-blue-300"/>
                         </div>
                     </div>
                 @empty

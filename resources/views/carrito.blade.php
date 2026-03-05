@@ -2,7 +2,7 @@
 @section('content')
     <div class="flex flex-col p-10">
         <div class="flex flex-row-reverse w-[100] mb-[3%]">
-            <x-anchor title="Ir a Catalogo" href="{{ route('catalogo.index') }}" bg="bg-blue-500" size="2xl" hover="bg-blue-300"/>
+            <x-anchor title="Ir a Catalogo" href="{{ route('catalogo.index') }}" bg="bg-gray-500" size="2xl" hover="bg-gray-300"/>
         </div>
         <div class="flex flex-col justify-center">
             @forelse ($carrito as $carro)

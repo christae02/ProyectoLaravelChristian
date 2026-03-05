@@ -21,8 +21,8 @@
         <x-anchor bg="bg-red-500" title="Regresar" href="/antibioticos/{{ $existencia->medicamento_id }}" hover="bg-red-300" size="3xl"/>
     </div>
     <div class="w-[35%] p-10 bg-gray-200 rounded-4xl shadow-lg">
-        <h1 class="text-4xl text-blue-500 font-bold mb-5">AGREGAR EXISTENCIA A LOTE:</h1>
-        <h1 class="bg-white rounded-4xl text-4xl font-bold mb-5">{{ $existencia->lote }}</h1>
+        <h1 class="text-4xl text-blue-500 font-bold mb-5">AGREGAR EXISTENCIA A LOTE: <span class="text-black">{{ $existencia->lote }}</span></h1>
+        <h1 class="bg-white rounded-4xl text-2xl font-bold mb-5">Existencia actual: {{ $existencia->existencias }}</h1>
         <form 
             class="bg-gray" 
             method="POST" 
@@ -30,7 +30,7 @@
         >
             @method('POST')
             @csrf
-
+            <h1 class="text-2xl text-blue-500 font-bold mb-1">Cantidad entrante:</h1>
             <input class="w-[40%] text-center text-8xl font-bold" type="number" id="existencias" name="existencias" value="0" readonly>
             <x-errormessage attribute="existencias"/>
 
