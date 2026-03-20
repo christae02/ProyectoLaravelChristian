@@ -16,6 +16,8 @@ class MovimientosExport implements FromCollection, WithHeadings, WithStyles
     */
     public function collection()
     {
+        Movimientos::with(['doctor', 'existencia'])->get();
+
         return Movimientos::leftjoin('doctor','movimientos.doctor_id', '=' , 'doctor.id')
             ->leftjoin('existencia','movimientos.existencia_id','=','existencia.id')
             ->join('medicamento','existencia.medicamento_id','=','medicamento.id')

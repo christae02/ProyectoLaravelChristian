@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Dom\Attr;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -18,6 +20,19 @@ class Doctor extends Model {
         'apellidoMaterno',
         'cedProf'
     ]; // Obligatoria -> Mass Assigment
+
+    // Getters
+    public function fullName(): string {
+        return "$this->nombre $this->apellidoPaterno $this->apellidoMaterno";
+    }
+
+    // Accessors y Mutators
+    public function nombre() : Attribute {
+        return Attribute::make(
+            get: fn($value) => "$value $this->apellidoPaterno $this->apellidoMaterno",
+            set: fn($value) => mb_strtoupper($value),
+        );
+    }
 
     public function direcciones(): HasMany {
         return $this->hasMany(Direcciones::class);
