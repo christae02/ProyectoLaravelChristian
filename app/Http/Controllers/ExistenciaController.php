@@ -7,6 +7,7 @@ use App\Models\Medicamento;
 use App\Models\Movimientos;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
+use App\Http\Requests\CatalogoRequest;
 use App\Http\Requests\ExistenciaRequest;
 use App\Http\Requests\UpdateExistenciaRequest;
 use App\Http\Requests\UpdateCantidadRequest;
@@ -20,6 +21,22 @@ class ExistenciaController extends Controller
     {
         $existencias = Existencia::latest('created_at')
             ->with('medicamento')
+            ->paginate('8');
+
+        return view('catalogo',[
+            'existencias' => $existencias
+        ]);
+    }
+
+    public function search(CatalogoRequest $request)
+    {
+        $nombre = $request->nombre;
+
+        $existencias = Existencia::latest('created_at')
+            ->with('medicamento')
+            ->whereHas('medicamento',function($med) use ($nombre){
+                $med->where('nombre','LIKE','%'.$nombre.'%');
+            })
             ->paginate('8');
 
         return view('catalogo',[

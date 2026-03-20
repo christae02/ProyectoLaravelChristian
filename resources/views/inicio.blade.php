@@ -11,15 +11,24 @@
                 </div>
                 <div>
                     <form method="GET" action="{{ route('movimientos.search') }}">
-                        <input
-                            class="bg-white"
-                            name="buscar"
-                            id="buscar"
-                            placeholder="Buscar..."
-                            type="text"
-                            onchange="this.form.submit()"
-                            value="{{ request('buscar') }}"
-                        >
+                        <div class="bg-gray-200 rounded-lg px-3 py-2 flex items-center gap-2">
+                            <input
+                                class="bg-white px-4 rounded-l-lg outline-none h-12 w-full"
+                                name="buscar"
+                                id="buscar"
+                                placeholder="Buscar..."
+                                type="text"
+                                onchange="this.form.submit()"
+                                value="{{ request('buscar') }}"
+                            >
+                            <button type="submit" class="bg-white hover:bg-gray-200 h-12 w-12 flex items-center justify-center rounded-r-lg">
+                                <img 
+                                    src="{{ asset('images/lupa.png') }}" 
+                                    alt="Buscar"
+                                    class="w-full h-full object-contain"
+                                >
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -53,7 +62,7 @@
                             <x-tabledata type="td" data="{{ $movimiento->cantidad }}"/>
                             <x-tabledata type="td" data="{{ $movimiento->existencia->lote }}"/>
                             <x-tabledata type="td" data="{{ $movimiento->existencia->fecha_cad->locale('es')->translatedFormat('F Y') }}"/>
-                            <x-tabledata type="td" data="{{ $movimiento->doctor->nombre ?? '--------' }} {{ $movimiento->doctor->apellidoPaterno ?? '' }} {{ $movimiento->doctor->apellidoMaterno ?? ''}}"/>
+                            <x-tabledata type="td" data="{{ $movimiento->doctor->nombre ?? '--------' }}"/>
                             <x-tabledata type="td" data="{{ $movimiento->doctor->cedProf ?? '--------' }}"/>
                             <x-tabledata type="td" data="{{ $movimiento->domicilio ?? '--------'}}"/>
                             <x-tabledata type="td" data="{{ $movimiento->receta ?? '--------'}}"/>

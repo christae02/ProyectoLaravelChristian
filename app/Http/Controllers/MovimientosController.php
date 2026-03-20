@@ -116,12 +116,10 @@ class MovimientosController extends Controller
 
         $buscar = $request->buscar;
 
-dd();
-
         $movimientos = Movimientos::latest('created_at')
             ->with(['doctor','existencia.medicamento'])
-            ->whereHas('existencia.medicamento',function($q){
-                $q->where('nombre','like','%'.$buscar.'%');
+            ->whereHas('existencia.medicamento',function($med) use ($buscar){
+                $med->where('nombre','like','%'.$buscar.'%');
             })
             ->paginate('5');
 

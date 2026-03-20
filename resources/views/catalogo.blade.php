@@ -6,16 +6,16 @@
         <h1 class="text-4xl text-blue-500 font-bold">CATALOGO</h1>
       </div>
       <div>
-        <form method="GET" action="{{ route('movimientos.search') }}">
+        <form method="GET" action="{{ route('catalogo.search') }}">
           <div class="bg-gray-200 rounded-lg px-3 py-2 flex items-center gap-2">
             
             <input
-              name="buscar"
-              id="buscar"
+              name="nombre"
+              id="nombre"
               placeholder="Buscar..."
               type="text"
+              value="{{ request('nombre') }}"
               onchange="this.form.submit()"
-              value="{{ request('buscar') }}"
               class="bg-white px-4 rounded-l-lg outline-none h-12 w-full"
             >
 
@@ -44,7 +44,10 @@
           id="{{ $existencia->id }}"
         />
       @empty
-        <h1>No existen antibioticos, Ingrese uno</h1>
+        <div class="flex flex-col items-center gap-4">
+          <h1 class="text-4xl font-bold">No existen antibioticos, Ingrese uno</h1>
+          <x-anchor href="{{ route('antibioticos.create') }}" size="2xl" title="Crear Antibioico" bg="bg-green-500" hover="bg-green-200"/>
+        </div>
       @endforelse
 
       

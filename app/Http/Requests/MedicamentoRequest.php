@@ -22,14 +22,24 @@ class MedicamentoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => 'required|string|max:80',
+            'nombre' => [
+                'required',
+                'string',
+                'max:80',
+                'regex:/^[\pL\s]+$/u'
+            ],
             'mg' => [
                 'required',
                 'string',
                 'max:8',
                 'regex:/^[0-9\/]+$/'
             ],
-            'presentacion' => 'required|string|max:20',
+            'presentacion' => [
+                'required',
+                'string',
+                'max:20',
+                'regex:/^[0-9\/]+$/'
+                ],
             'imagen' => 'required'
         ];
     }
@@ -40,7 +50,8 @@ class MedicamentoRequest extends FormRequest
             'string' => ":attribute solo puede ser con letras",
             'required' => ":attribute no puede estar vacio",
             'integer' => ":attribute solo acepta valores numéricos",
-            'regex' => ':attribute solo acepta números y "/"'
+            'mg.regex' => ':attribute solo acepta números y "/"',
+            'regex' => ':attribute solo acepta letras'
         ];
     }
 

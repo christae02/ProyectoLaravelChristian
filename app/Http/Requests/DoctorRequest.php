@@ -22,13 +22,29 @@ class DoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nombre' => 'required|string|max:80',
-            'apellidoPaterno' => 'required|string|max:40',
-            'apellidoMaterno' => 'required|string|max:40',
+            'nombre' => [
+                'required',
+                'string',
+                'max:80',
+                'regex:/^[\pL\s]+$/u'
+            ],
+            'apellidoPaterno' => [
+                'required',
+                'string',
+                'max:40',
+                'regex:/^[\pL\s]+$/u'
+            ],
+            'apellidoMaterno' => [
+                'required',
+                'string',
+                'max:40',
+                'regex:/^[\pL\s]+$/u'
+            ],
             'cedProf' => [
                 'required',
                 'integer',
-                'digits_between:6,12'
+                'digits_between:6,12',
+                'unique:doctor,cedProf'
             ]
         ];
     }
@@ -38,8 +54,10 @@ class DoctorRequest extends FormRequest
             'max' => ":attribute no puede tener mas de :max caracteres",
             'string' => ":attribute solo puede ser con letras",
             'required' => ":attribute no puede estar vacio",
+            'regex' => ":attribute solo acepta letras",
             'integer' => ":attribute solo acepta valores numéricos",
-            'digits_between' => ":attribute solo puede tener entre :min y :max digitos"
+            'digits_between' => ":attribute solo puede tener entre :min y :max digitos",
+            'unique' => ":attribute ya existe"
         ];
     }
 

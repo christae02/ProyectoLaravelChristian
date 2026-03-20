@@ -22,7 +22,12 @@ class UpdateExistenciaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'lote' => 'required|string|max:80',
+            'lote' => [
+                'required',
+                'string',
+                'max:80',
+                'unique:existencia,lote'
+            ],
             'fecha_cad' => 'required'
         ];
     }

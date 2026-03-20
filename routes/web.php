@@ -30,6 +30,9 @@ Route::get('/inicio/busqueda',[MovimientosController::class,'search'])
 Route::get('/catalogo',[ExistenciaController::class,'index'])
     ->name('catalogo.index');
 
+Route::get('/catalogo/buscar',[ExistenciaController::class,'search'])
+    ->name('catalogo.search');
+
 //Carrito
 Route::get('/carrito',[CarritoController::class,'index'])
     ->name('carrito.index');

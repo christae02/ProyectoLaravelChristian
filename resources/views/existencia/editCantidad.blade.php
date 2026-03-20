@@ -9,7 +9,7 @@
 
         function restar(){
             var input = document.getElementById('existencias');
-            if(input.value > 0){
+            if(input.value > 1){
                 input.value = input.value-1;
             }
         }
@@ -31,7 +31,7 @@
             @method('POST')
             @csrf
             <h1 class="text-2xl text-blue-500 font-bold mb-1">Cantidad entrante:</h1>
-            <input class="w-[40%] text-center text-8xl font-bold" type="number" id="existencias" name="existencias" value="0" readonly>
+            <input class="w-[40%] text-center text-8xl font-bold" type="number" id="existencias" name="existencias" value="1" readonly>
             <x-errormessage attribute="existencias"/>
 
             <div>

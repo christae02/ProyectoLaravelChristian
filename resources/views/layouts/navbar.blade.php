@@ -11,8 +11,9 @@
     <nav>
         <div class="bold hidden md:flex space-x-15 ml-10">
             <x-navlink title="Inicio"/>
-            <x-navlink title="Antibioticos" route="/antibioticos"/>
-            <x-navlink title="Doctores" route="/doctor"/>
+            <x-navlink title="Antibioticos" route="{{ route('antibioticos.index') }}"/>
+            <x-navlink title="Doctores" route="{{ route('doctor.index') }}"/>
+            <x-navlink title="Catalogo" route="{{ route('catalogo.index') }}"/>
         </div>
     </nav>
 </div>
